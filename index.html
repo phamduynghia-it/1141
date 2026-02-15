@@ -236,6 +236,7 @@
                 "Năm mới nhiều niềm vui\n và hạnh phúc\n⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️",
                 "Yêu a.",
                 "Em.",
+               " năm mới vững vàng,\n mọi việc thuận lợi⭐️"
             ];
 
             var currentTextIndex = 0;
@@ -394,8 +395,13 @@
                 }
 
                 if (countdownStage === "stable") {
+                    // 🚫 NẾU LÀ CÂU CUỐI → GIỮ MÃI, KHÔNG TAN
+                    if (currentTextIndex === countdownTexts.length - 1) {
+                        // khóa vĩnh viễn ở trạng thái stable
+                        return requestAnimationFrame(updateCountdownParticles);
+                    }
+
                     stableTime++;
-                    // Giữ nguyên trạng thái này trong STABLE_DURATION frame
                     if (stableTime > STABLE_DURATION) {
                         countdownStage = "dispersing";
                     }
